@@ -7,13 +7,12 @@ En effet celui-ci n'est là qu'à but d'information pour l'équipe**
   Dans ce document il est possible de trouver l'ensemble des informations nécéssaires à la bonne comprhéension de chaque partie du projet.
   En effet ce document se décompose de la manière suivante : 
   
-  - Méthode d'installation de la solution (sous XAMP ou Machine Virtuelle)
-  - Présentation de l'arbre des dossiers
-  - Présentation de chaque groupe de fichier
-  - Règles de Développement à appliquer
+  - Méthode d'installation de la solution (sous XAMP)
+  - Présentation de l'arbre des dossiers et des fichiers
   - Liens Utiles
   
 # INSTALLATION DES OUTILS NECESSAIRES  
+---
 ## 1/INSTALLATION DE XAMP
 
 Pour ce qui concerne l'installation de XAMP, suivre le tutoriel suivant 
@@ -25,7 +24,7 @@ Afin d'avoir la même version prendre la 3.2.4
  Ensuite cliquez sur **Admin** pour ouvrir la page d'administration de la base de donnée  
  Créez une nouvelle base de donnée prenomée webapp en **utf8mb4_general_ci**
 
-### A/MODIFICATIONS A APPORTER
+### MODIFICATIONS A APPORTER
 #### FICHIER SQL
 
 Une fois fait, il faudra modifier quelques lignes du fichier permettant 
@@ -58,4 +57,73 @@ Il sera expliqué dans plus bas comment l'utiliser.
 
 Dans le dossier Git que vous clonerez sera déposer un fichier Zip contenantun dossier et son arborescance ainsi que les différents fichiers du projet.  
 Il faudra le décompresser et mettre le dossier soit dans le fichier partagée avec la machine virtuelle soit dans **C:\xampp\htdocs** sur xamp.  
+  
+  
+# PRESENTATION DE L'ARBORESCENCE DU DOSSIER CONTENANT LE PROJET
+---
+Afin de faciliter le développement du projet, une arborescence "type" des dossiers et des fichiers a été choisit. 
+  Ainsi le dossier de projet est constitué des dossiers suivant :
+- Config
+- Controllers
+- Core
+- Logs
+- templates_c
+- tpl
+- web  
+et d'un fichier de base **index.php** situé à la racine.  
+> L'ensemble de ces dossiers et de certains de leurs contenues proviennent directement du dossier **SMARTY** proposé en exemple dans le tutoriel [Créez votre site avec SMARTY en MVC](http://fredods.com/creer-votre-site-avec-smarty-en-mvc-partie-1/)et en est la base.
+
+## 1/REPERTOIRE RACINE
+
+Dans ce répertoire, ce trouve un seul fichier qui ne devrait pas avoir à être modifié. En effet il s'agit du fichier php de **routage**, fichier dont il incombe de récupérer les bons controlleurs et d'afficher la bonne View suivant les informations passées dans l'url.
+
+## 2/DOSSIER CONFIG
+
+Dans ce dossier se trouve deux fichiers **php** nécéssaire au bon fonctionnement du site.  
+Le premier fichier est **config_init.php**; ce fichier a pour vocation de charger l'ensemble des éléments nécessaire au lancement du site, comme par exemple la récupération des classes utilisées dans le projet, de la connexion à la base de données, etc ...  
+Le second fichier est **defines.inc.php**; ce fichier lui contient l'ensemble des variables globales pouvant être utilisées dans le projet comme par exemple le chemin vers la racine des documents.  
+> **ATTENTION** :  
+> Bien mettre seulement des variables Globales dans ce fichier  
+> Préférez faire plusieurs petites variables globales que une seul, surtout pour ce qui concerne les variables représentant un chemin vers un dossier ou un fichier.  
+
+## 3/DOSSIER CONTROLLERS
+
+Dans ce dossier se trouve l'ensemble des fichiers **controlleurs** de chaques pages **php**. Il s'agit de fichier en **php** permettant de faire appel à des fonctions externes et qui vont charger dans des variables **SMARTY** des données.
+
+> **ATTENTION** :  
+> Ce n'est pas dans les fichiers controllers que se font les gros traitements, ces fichiers ne font qu'appelé des méthodes et des fonctions et récupérer des données. On oeut y faire des tests de conditions mais pas plus.
+
+## 4/DOSSIER CORE
+
+Dans ce dossier sera placé l'ensemble des classes et de leurs méthodes pouvant être utilisée dans le projet, le tout au format **php**.
+
+## 5/DOSSIER LOG
+
+Dans ce dossier pourra être située les logs du site.
+
+## 6/DOSSIER TEMPLATES_C
+
+Dossier propre au tutoriel à ne surtout pas modifié.
+
+## DOSSIER TPL
+
+Dans ce dossier ce trouve un fichier **tpl** pour l'entête et un pour le bas de page ainsi qu'un dossier **pages** qui lui contiendra l'ensemble de nos views (une view = une page internet).On viendra donc mettre dans ce sous-dossier les pages au format **tpl** que l'on veut afficher sur notre site.
+> **ATTENTION** :  
+> Ne mettre que des fichiers tpl contenant de l'HTML et/ou du JavaScript  
+> **En  cas de création d'une nouvelle vue, il faut impérativement que le controlleur associé est le même nom que la vue car le chargement des fichiers se fait dans *index.php*.**
+## DOSSIER WEB
+
+Dans ce dossier on retouve plussieurs sous-dossier qui permettront de stockers les fichiers **css**, **javaScript**, les **images** utiles au projet et les différents **outils** tels que SMARTY.
+
+# LIENS UTILES
+---
+[Tutoriel installation XAMP](https://www.ionos.fr/digitalguide/serveur/outils/tutoriel-xampp-creer-un-serveur-de-test-local/)  
+[projet original](https://github.com/HugoPetermann/Tidal-main/tree/master/webapp)  
+[GitKraken](https://www.gitkraken.com/download)  
+[Créez votre site avec SMARTY en MVC](http://fredods.com/creer-votre-site-avec-smarty-en-mvc-partie-1/)  
+[Manuel PHP](https://www.php.net/manual/fr/intro-whatis.php)  
+[W3Schools](https://www.w3schools.com/)
+
+
+
 
