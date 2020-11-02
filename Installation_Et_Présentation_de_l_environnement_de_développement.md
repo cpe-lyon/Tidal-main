@@ -55,7 +55,7 @@ Il sera expliqué comment l'utiliser dans un autre document.
 
 ## 4/RECUPERATION DU DOSSIER DE DEVELOPPEMENT
 
-Dans le dossier Git que vous clonerez, sera déposer un fichier Zip contenant un dossier et son arborescance ainsi que les différents fichiers du projet.  
+Dans le dossier Git que vous clonerez, sera déposer un fichier Zip appélé **SiteTidal.zip** contenant un dossier et son arborescance ainsi que les différents fichiers du projet. 
 Il faudra le décompresser et mettre le dossier dans **C:\xampp\htdocs** sur xamp.  
   
   
